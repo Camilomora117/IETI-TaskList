@@ -4,6 +4,8 @@ import { Search } from '../Search/index';
 import { Task } from '../Task/index';
 import { TaskList } from '../TaskList/index';
 import { useTasks } from './useTask';
+import { Modal } from '../Modal/index';
+import { TodoForm } from '../TodoForm';
 
 function App() {
 
@@ -17,6 +19,9 @@ function App() {
     completeTask,
     openModal,
     setOpenModal,
+    openUpdateTask,
+    textUpdate,
+    updateTask,
   } = useTasks();
 
 
@@ -37,10 +42,22 @@ function App() {
         key={task.text}
         text={task.text}
         completed={task.completed}
+        onComplete={() => completeTask(task.text)}
+        onDelete={() => deleteTask(task.text)}
+        setOpenModal={() => openUpdateTask(task.text)}
         />  
       )}
-      
       />
+
+      {!!openModal && (
+        <Modal>
+            <TodoForm 
+              updateTask={updateTask}
+              setOpenModal={setOpenModal}
+              textTask={textUpdate}
+            /> 
+        </Modal> 
+      )}
 
     </div>
   )

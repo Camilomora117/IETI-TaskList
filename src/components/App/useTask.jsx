@@ -11,6 +11,7 @@ function useTasks() {
       } = useLocalStorage('TASK_V1', []);
       
       const [openModal, setOpenModal] = React.useState(false);
+      const [textUpdate, setTextUpdate] = React.useState('');
       const [searchValue, setSearchValue] = React.useState('');
 
       const completeTask = (text) => {
@@ -19,6 +20,7 @@ function useTasks() {
         newTasks[taskIndex].completed = true;
         saveTasks(newTasks);
       }
+      
       const deleteTask = (text) => {
         const todoIndex = tasks.findIndex(todo => todo.text === text);
         const newTasks = [... tasks];
@@ -35,6 +37,20 @@ function useTasks() {
         saveTasks(newTasks);
       };
 
+      const updateTask = (textOld, textNew) => {
+        if (textOld != textNew) {
+          const todoIndex = tasks.findIndex(todo => todo.text === textOld);
+          const newTasks = [... tasks].filter(task => task.text != textOld);
+          newTasks.push({text: textNew, completed: tasks[todoIndex].completed});
+          saveTasks(newTasks);
+        }
+      }
+
+      const openUpdateTask = (text) => {
+         setTextUpdate(text);
+         setOpenModal(true);
+      }
+
     return (
         {
             tasks,
@@ -46,6 +62,9 @@ function useTasks() {
             completeTask,
             openModal,
             setOpenModal,
+            openUpdateTask,
+            textUpdate,
+            updateTask,
         }
     );
 } 

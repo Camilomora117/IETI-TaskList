@@ -12,6 +12,7 @@ const Search = ({addTask, totalTask}) => {
             const verificateRepeatTask = totalTask.filter(task => task.text == inputValue).length;
             if (verificateRepeatTask == 0) {
                 addTask(inputValue);
+                setInputValue('');
             } else {
                 setInputValue('');
                 setInputPlaceHolder('Ya escribiste esta Tarea!');
