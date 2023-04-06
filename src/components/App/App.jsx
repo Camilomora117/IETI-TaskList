@@ -24,15 +24,18 @@ function App() {
     <div className="App">
       <Header title="Todo App"/>  
 
-      <Search />
+      <Search 
+      addTask={addTask}
+      totalTask={tasks}
+      />
 
       <TaskList 
       totalTask={tasks}
 
       render ={task => (
         <Task 
-        key={task.name}
-        text={task.name}
+        key={task.text}
+        text={task.text}
         completed={task.completed}
         />  
       )}
