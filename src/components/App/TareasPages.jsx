@@ -7,7 +7,7 @@ import { useTasks } from './useTask';
 import { Modal } from '../Modal/index';
 import { TodoForm } from '../TodoForm';
 
-function App() {
+function TareasPage() {
 
   const {
     tasks,
@@ -66,4 +66,4 @@ function App() {
   )
 }
 
-export default App
+export default TareasPage
