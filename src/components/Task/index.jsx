@@ -5,31 +5,40 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 function Task(props) {
-
-    const onClickButton = () => {
-        props.setOpenModal(prevState => !prevState);
-    }
     
     return (
         <li className='TodoTask'>
 
-            {(props.completed)
-            ?<RadioButtonCheckedIcon color="success"/>
-            :<RadioButtonUncheckedIcon
-            onClick={props.onComplete}
-            />
-            }
-            
-            <p 
-            className={`TodoTask-p ${props.completed && 'TodoTask-p--complete'}`}
-            >
-            {props.text}
-            </p>
+            <div className="container-info">
+
+                {(props.completed)
+                ?<RadioButtonCheckedIcon color="success" className="boton-check"/>
+                :<RadioButtonUncheckedIcon
+                onClick={props.onComplete}
+                className="boton-check"
+                />
+                }
+
+                <div className="container-texts">
+                    <h1 
+                    className={`TodoTask-p ${props.completed && 'TodoTask-p--complete'}`}
+                    >
+                    {props.title}
+                    </h1>
+
+                    <p 
+                    className={`TodoTask-p description ${props.completed && 'TodoTask-p--complete'}`}
+                    >
+                    {props.description}
+                    </p>
+                </div>
+
+            </div>
 
             <div className='options-container'>
                 <EditIcon 
                 color="primary"
-                onClick={() => onClickButton()}
+                onClick={props.setOpenModal}
                 /> 
 
                 <DeleteIcon 

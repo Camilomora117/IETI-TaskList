@@ -11,59 +11,62 @@ function useTasks() {
       } = useLocalStorage('TASK_V1', []);
       
       const [openModal, setOpenModal] = React.useState(false);
-      const [textUpdate, setTextUpdate] = React.useState('');
-      const [searchValue, setSearchValue] = React.useState('');
+      const [textUpdateTitle, setTextUpdateTitle] = React.useState('');
+      const [textUpdateDes, setTextUpdateDes] = React.useState('');
+      const [textUpdateCom, setTextUpdateCom] = React.useState(false);
 
-      const completeTask = (text) => {
-        const taskIndex = tasks.findIndex(todo => todo.text === text);
+      const completeTask = (title) => {
+        const taskIndex = tasks.findIndex(todo => todo.title === title);
         const newTasks = [... tasks];
         newTasks[taskIndex].completed = true;
         saveTasks(newTasks);
       }
       
-      const deleteTask = (text) => {
-        const todoIndex = tasks.findIndex(todo => todo.text === text);
+      const deleteTask = (title) => {
+        const todoIndex = tasks.findIndex(todo => todo.title === title);
         const newTasks = [... tasks];
         newTasks.splice(todoIndex, 1);
         saveTasks(newTasks);
       }
 
-      const addTask = (text) => {
+      const addTask = (title, description) => {
         const newTasks = [...tasks];
         newTasks.push({
-          text,
+          title,
+          description,
           completed: false,
         });
         saveTasks(newTasks);
       };
 
-      const updateTask = (textOld, textNew) => {
-        if (textOld != textNew) {
-          const todoIndex = tasks.findIndex(todo => todo.text === textOld);
-          const newTasks = [... tasks].filter(task => task.text != textOld);
-          newTasks.push({text: textNew, completed: tasks[todoIndex].completed});
+      const updateTask = (titletNew, desNew, compNew) => {
+        if (textUpdateTitle != titletNew || textUpdateDes != desNew || textUpdateCom != compNew) {
+          const newTasks = [... tasks].filter(task => task.title != textUpdateTitle);
+          newTasks.push({title: titletNew, description: desNew, completed: compNew});
           saveTasks(newTasks);
         }
       }
 
-      const openUpdateTask = (text) => {
-         setTextUpdate(text);
-         setOpenModal(true);
+      const openUpdateTask = (title, description, completed) => {
+        setTextUpdateTitle(title);
+        setTextUpdateDes(description);
+        setTextUpdateCom(completed);
+        setOpenModal(true);
       }
 
     return (
         {
             tasks,
             error,
-            searchValue,
-            setSearchValue,
             addTask,
             deleteTask,
             completeTask,
             openModal,
             setOpenModal,
             openUpdateTask,
-            textUpdate,
+            textUpdateTitle,
+            textUpdateDes,
+            textUpdateCom,
             updateTask,
         }
     );

@@ -12,15 +12,15 @@ function App() {
   const {
     tasks,
     error,
-    searchValue,
-    setSearchValue,
     addTask,
     deleteTask,
     completeTask,
     openModal,
     setOpenModal,
     openUpdateTask,
-    textUpdate,
+    textUpdateTitle,
+    textUpdateDes,
+    textUpdateCom,
     updateTask,
   } = useTasks();
 
@@ -39,12 +39,13 @@ function App() {
 
       render ={task => (
         <Task 
-        key={task.text}
-        text={task.text}
+        key={task.title}
+        title={task.title}
+        description={task.description}
         completed={task.completed}
-        onComplete={() => completeTask(task.text)}
-        onDelete={() => deleteTask(task.text)}
-        setOpenModal={() => openUpdateTask(task.text)}
+        onComplete={() => completeTask(task.title)}
+        onDelete={() => deleteTask(task.title)}
+        setOpenModal={() => openUpdateTask(task.title, task.description, task.completed)}
         />  
       )}
       />
@@ -54,7 +55,9 @@ function App() {
             <TodoForm 
               updateTask={updateTask}
               setOpenModal={setOpenModal}
-              textTask={textUpdate}
+              textTitle={textUpdateTitle}
+              textDescription={textUpdateDes}
+              textCompleted={textUpdateCom}
             /> 
         </Modal> 
       )}

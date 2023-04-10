@@ -2,10 +2,26 @@
     background-color: #FAFAFA;
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin-top: 24px;
     box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+}
+
+.container-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-texts {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boton-check {
+    margin-left: 20px;
 }
   
 .TodoTask-p {
@@ -30,4 +46,8 @@
     width: 70px;
     justify-content: space-between;
     margin-right: 10px;
+}
+
+.description {
+    width: 300px;
 }
