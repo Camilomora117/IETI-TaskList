@@ -2,15 +2,31 @@
     background-color: #FAFAFA;
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin-top: 24px;
     box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
-  }
+}
+
+.container-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-texts {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boton-check {
+    margin-left: 20px;
+}
   
 .TodoTask-p {
     margin: 24px 0 24px 24px;
-    width: calc(100% - 120px);
+    width: calc(100% - 150px);
     font-size: 18px;
     line-height: 24px;
     font-weight: 400;
@@ -22,4 +38,16 @@
 
 .icon_delete {
     color: rgb(186, 28, 28);
+}
+
+.options-container {
+    display: flex;
+    align-items: center;
+    width: 70px;
+    justify-content: space-between;
+    margin-right: 10px;
+}
+
+.description {
+    width: 300px;
 }
