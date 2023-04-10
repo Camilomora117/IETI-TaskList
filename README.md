@@ -18,3 +18,6 @@ Cuando se agrega una tarea nueva, se crea un nuevo objeto de tarea y se agrega a
 
 ### Autor
 Yesid camilo Mora Barbosa
+
+### Ejecutar 
+npm run dev
